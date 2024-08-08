@@ -1,0 +1,24 @@
+#BUILD THE IMAGE 
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$sudo docker image build --tag rmbyext:latest .
+#check the image is created or not
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$sudo docker image ls
+
+# LET'S GET STARTED TO TEST OUR EXECUTABLE IMAGE BY RUNNING IT AS CONTAINER
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$ touch a.pdf b.pdf c.pdf
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$ touch x.txt y.txt z.txt
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$ ls
+a.pdf  b.pdf  c.pdf  delete_log.log  Dockerfile  x.txt  y.txt  z.txt
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$ sudo docker container run --rm -v $(pwd):/zone rmbyext-image:latest txt pdf
+Removing: TXT
+y.txt
+x.txt
+z.txt
+
+Removing: PDF
+c.pdf
+b.pdf
+a.pdf
+
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$ ls
+delete_log.log  Dockerfile
+arif@Arif-ubuntu:~/Desktop/docker-handbook-projects/rmbyext$ SUCCESSFULLY DELETED txt and pdf files :)
